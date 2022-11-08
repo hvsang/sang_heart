@@ -14,10 +14,10 @@
     <style>
         html,
         body {
-            overflow: hidden;
+            height: 100%;
             padding: 0;
             margin: 0;
-            background: #000;
+            background: rgba(0, 0, 0, 0.851);
         }
 
         canvas {
@@ -26,17 +26,57 @@
             height: 100%;
         }
 
-        canvas {
-            /* top: 50%;
-            left: 50%; */
-            z-index: 1;
-            display: block;
-            position: absolute;
-            transform: translate(-50%, -50%);
-            animation: heart 1.5s ease infinite
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        @keyframes heart {
+        .box {
+            width: 1000px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        #pinkboard {
+            position: relative;
+            margin: auto;
+            height: 750px;
+            width: 750px;
+            animation: animate 1.2s infinite;
+        }
+
+        #pinkboard:before,
+        #pinkboard:after {
+            content: '';
+            position: absolute;
+            background: #d63031;
+            width: 100px;
+            height: 160px;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+
+        #pinkboard:before {
+            left: 100px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+                0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+
+        #pinkboard:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        @keyframes animate {
             0% {
                 transform: scale(1);
             }
@@ -45,9 +85,10 @@
                 transform: scale(.8);
             }
 
-            /* 60% {
+            60% {
                 transform: scale(1.2);
-            } */
+            }
+
             100% {
                 transform: scale(1);
             }
@@ -57,9 +98,7 @@
 
 <BODY>
     <div class="box">
-        <canvas id="pinkboard">
-            <h1>sang</h1>
-        </canvas>
+        <canvas id="pinkboard"></canvas>
     </div>
     <script>
         var settings = {
@@ -73,30 +112,7 @@
         };
         /*
          */
-        (function () {
-            var b = 0;
-            var c = ["ms", "moz", "webkit", "o"];
-            for (var a = 0; a < c.length && !window.requestAnimationFrame; ++a) {
-                window.requestAnimationFrame = window[c[a] + "RequestAnimationFrame"];
-                window.cancelAnimationFrame = window[c[a] + "CancelAnimationFrame"] || window[c[a] + "CancelRequestAnimationFrame"]
-            }
-            if (!window.requestAnimationFrame) {
-                window.requestAnimationFrame = function (h, e) {
-                    var d = new Date().getTime();
-                    var f = Math.max(0, 16 - (d - b));
-                    var g = window.setTimeout(function () {
-                        h(d + f)
-                    }, f);
-                    b = d + f;
-                    return g
-                }
-            }
-            if (!window.cancelAnimationFrame) {
-                window.cancelAnimationFrame = function (d) {
-                    clearTimeout(d)
-                }
-            }
-        }());
+        (function () { var b = 0; var c = ["ms", "moz", "webkit", "o"]; for (var a = 0; a < c.length && !window.requestAnimationFrame; ++a) { window.requestAnimationFrame = window[c[a] + "RequestAnimationFrame"]; window.cancelAnimationFrame = window[c[a] + "CancelAnimationFrame"] || window[c[a] + "CancelRequestAnimationFrame"] } if (!window.requestAnimationFrame) { window.requestAnimationFrame = function (h, e) { var d = new Date().getTime(); var f = Math.max(0, 16 - (d - b)); var g = window.setTimeout(function () { h(d + f) }, f); b = d + f; return g } } if (!window.cancelAnimationFrame) { window.cancelAnimationFrame = function (d) { clearTimeout(d) } } }());
         /*
          * Point class
          */
@@ -264,7 +280,7 @@
                 }
                 context.closePath();
                 // create the fill
-                context.fillStyle = '#ea80b0';
+                context.fillStyle = '#f50b02';
                 context.fill();
                 // create the image
                 var image = new Image();
