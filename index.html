@@ -10,7 +10,11 @@
     <link rel="shortcut icon"
         href="https://photo-cms-tpo.epicdn.me/w890/Uploaded/2022/zaugtn/2021_05_26/tien-phong-idol-6438.jpeg"
         type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
     <style>
         html,
         body {
@@ -18,6 +22,15 @@
             padding: 0;
             margin: 0;
             background: rgba(0, 0, 0, 0.851);
+        }
+
+        h1 {
+            position: absolute;
+            color: #000;
+            font-family: 'Pacifico', cursive;
+            color: #fff;
+            z-index: 100;
+            animation: animate 1.2s infinite;
         }
 
         canvas {
@@ -41,6 +54,8 @@
             transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         #pinkboard {
@@ -98,6 +113,7 @@
 
 <BODY>
     <div class="box">
+        <h1>SANG</h1>
         <canvas id="pinkboard"></canvas>
     </div>
     <script>
